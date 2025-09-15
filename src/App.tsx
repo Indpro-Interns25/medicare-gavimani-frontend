@@ -77,7 +77,9 @@ const App = () => {
     return (
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <LoginForm onLogin={handleLogin} />
+          <div className="min-h-screen bg-hero-pattern bg-cover bg-center">
+            <LoginForm onLogin={handleLogin} />
+          </div>
           <Toaster />
           <Sonner />
         </TooltipProvider>

@@ -24,9 +24,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     setTimeout(() => {
       if (email && password) {
         // Mock role assignment based on email
-        const role = email.includes('admin') ? 'admin' : 
-                    email.includes('doctor') ? 'doctor' : 'receptionist';
-        
+        const role = email.includes('admin') ? 'admin' :
+          email.includes('doctor') ? 'doctor' : 'receptionist';
+
         toast({
           title: "Login Successful",
           description: `Welcome to MediCare Pro, ${role}!`,
@@ -44,7 +44,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-secondary/10 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-blend-darken bg-black/70 p-4">
       <div className="w-full max-w-md animate-fade-in">
         <Card className="shadow-elevated bg-gradient-card">
           <CardHeader className="text-center space-y-4">
@@ -86,8 +86,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                   required
                 />
               </div>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-gradient-primary hover:shadow-medical transition-medical"
                 disabled={isLoading}
               >

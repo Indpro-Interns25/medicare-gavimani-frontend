@@ -137,3 +137,33 @@ All colors MUST be HSL for proper theming.
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes cg-shimmer-light {
+  0% {
+    background-position: 200% 0;
+    text-shadow: 0 0 2px rgba(255,255,255,0.1), 0 0 4px rgba(255,255,255,0.05);
+  }
+  50% {
+    background-position: 0% 0;
+    text-shadow: 0 0 4px rgba(255,255,255,0.4), 0 0 8px rgba(255,255,255,0.3);
+  }
+  100% {
+    background-position: -200% 0;
+    text-shadow: 0 0 2px rgba(255,255,255,0.1), 0 0 4px rgba(255,255,255,0.05);
+  }
+}
+
+.text-cg-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0.4) 30%,  
+    rgba(255,255,255,0.85) 50%,  /* softer white light stripe */
+    rgba(255,255,255,0.4) 70%,  
+    rgba(255,255,255,0.8) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cg-shimmer-light 8s ease-in-out infinite;
+}

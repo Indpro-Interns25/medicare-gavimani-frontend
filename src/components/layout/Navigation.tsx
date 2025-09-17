@@ -1,19 +1,19 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { 
-  Heart, 
-  LayoutDashboard, 
-  Users, 
-  Calendar, 
-  FileText, 
-  UserPlus, 
+import { GiCaduceus } from 'react-icons/gi';
+import {
+  Heart,
+  LayoutDashboard,
+  Users,
+  Calendar,
+  FileText,
+  UserPlus,
   CalendarPlus,
   LogOut,
   Menu,
   X
 } from 'lucide-react';
-
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
@@ -21,11 +21,11 @@ interface NavigationProps {
   onLogout: () => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ 
-  currentPage, 
-  onPageChange, 
-  userRole, 
-  onLogout 
+export const Navigation: React.FC<NavigationProps> = ({
+  currentPage,
+  onPageChange,
+  userRole,
+  onLogout
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -38,7 +38,7 @@ export const Navigation: React.FC<NavigationProps> = ({
     { id: 'medical-records', label: 'Medical Records', icon: FileText, roles: ['admin', 'doctor'] },
   ];
 
-  const filteredMenuItems = menuItems.filter(item => 
+  const filteredMenuItems = menuItems.filter(item =>
     item.roles.includes(userRole)
   );
 
@@ -49,11 +49,10 @@ export const Navigation: React.FC<NavigationProps> = ({
           onPageChange(item.id);
           if (mobile) setIsMenuOpen(false);
         }}
-        className={`${mobile ? 'w-full' : 'w-full'} flex items-center space-x-3 px-4 py-3 text-left rounded-lg transition-medical ${
-          currentPage === item.id 
-            ? 'bg-gradient-primary text-white shadow-medical font-medium' 
-            : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-        }`}
+        className={`${mobile ? 'w-full' : 'w-full'} flex items-center space-x-3 px-4 py-3 text-left rounded-lg transition-medical ${currentPage === item.id
+          ? 'bg-gradient-primary text-white shadow-medical font-medium'
+          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+          }`}
       >
         <item.icon className="h-5 w-5 flex-shrink-0" />
         <span className="font-medium">{item.label}</span>
@@ -68,12 +67,12 @@ export const Navigation: React.FC<NavigationProps> = ({
         <div className="p-6 h-full flex flex-col">
           {/* Logo */}
           <div className="flex items-center space-x-3 mb-8">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-medical">
-              <Heart className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 rounded-lg flex items-center justify-center shadow-medical">
+              <GiCaduceus className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-lg bg-gradient-primary bg-clip-text text-transparent">
-                MediCare Pro
+              <h1 className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-500 to-green-500">
+                MediCare
               </h1>
               <p className="text-xs text-muted-foreground capitalize">{userRole}</p>
             </div>

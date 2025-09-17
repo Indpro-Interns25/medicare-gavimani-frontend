@@ -48,12 +48,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
       <div className="w-full max-w-md animate-fade-in">
         <Card className="shadow-elevated bg-gradient-card">
           <CardHeader className="text-center space-y-4">
+            {/* Logo */}
             <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-medical">
               <Heart className="w-8 h-8 text-white" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                MediCare Pro
+              <CardTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-500 to-green-500">
+                MediCare
               </CardTitle>
               <CardDescription className="text-muted-foreground mt-2">
                 Healthcare Management System

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,10 +17,22 @@ type UserRole = 'admin' | 'doctor' | 'receptionist';
 type PageType = 'dashboard' | 'patients' | 'add-patient' | 'patient-profile' | 'appointments' | 'schedule-appointment' | 'medical-records';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userRole, setUserRole] = useState<UserRole>('doctor');
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // Retrieve authentication state from localStorage
+    return localStorage.getItem('isAuthenticated') === 'true';
+  });
+  const [userRole, setUserRole] = useState<UserRole>(() => {
+    // Retrieve user role from localStorage
+    return (localStorage.getItem('userRole') as UserRole) || 'doctor';
+  });
   const [currentPage, setCurrentPage] = useState<PageType>('dashboard');
   const [selectedPatientId, setSelectedPatientId] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Save authentication state and user role to localStorage
+    localStorage.setItem('isAuthenticated', String(isAuthenticated));
+    localStorage.setItem('userRole', userRole);
+  }, [isAuthenticated, userRole]);
 
   const handleLogin = (role: UserRole) => {
     setUserRole(role);
@@ -33,6 +45,8 @@ const App = () => {
     setUserRole('doctor');
     setCurrentPage('dashboard');
     setSelectedPatientId(null);
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userRole');
   };
 
   const handlePageChange = (page: string, patientId?: number) => {

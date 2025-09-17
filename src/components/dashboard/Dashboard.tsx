@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { 
-  Users, 
-  Calendar, 
-  UserCheck, 
-  TrendingUp, 
+import {
+  Users,
+  Calendar,
+  UserCheck,
+  TrendingUp,
   Clock,
   MapPin,
   Phone,
@@ -63,17 +63,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
     }
   ];
 
-  const StatCard: React.FC<{ 
-    title: string; 
-    value: number; 
-    icon: React.ElementType; 
+  const StatCard: React.FC<{
+    title: string;
+    value: number;
+    icon: React.ElementType;
     trend?: string;
     onClick?: () => void;
   }> = ({ title, value, icon: Icon, trend, onClick }) => (
-    <Card 
-      className={`bg-gradient-card shadow-card hover:shadow-elevated transition-medical ${
-        onClick ? 'cursor-pointer' : ''
-      }`}
+    <Card
+      className={`bg-gradient-card shadow-card hover:shadow-elevated transition-medical ${onClick ? 'cursor-pointer' : ''
+        }`}
       onClick={onClick}
     >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -107,9 +106,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-foreground">
+        <h1 className="text-3xl font-bold text-cg-shimmer">
           Welcome back, {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
         </h1>
+
         <p className="text-muted-foreground">
           Here's what's happening in your healthcare system today.
         </p>
@@ -157,7 +157,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
                 {todayAppointments.length} appointments scheduled for today
               </CardDescription>
             </div>
-            <Button 
+            <Button
               onClick={() => onPageChange('appointments')}
               variant="outline"
               className="hover:shadow-medical transition-medical"
@@ -207,7 +207,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
         <CardContent>
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {(userRole === 'admin' || userRole === 'receptionist') && (
-              <Button 
+              <Button
                 onClick={() => onPageChange('add-patient')}
                 className="bg-gradient-primary hover:shadow-medical transition-medical"
               >
@@ -216,7 +216,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
               </Button>
             )}
             {(userRole === 'admin' || userRole === 'receptionist') && (
-              <Button 
+              <Button
                 onClick={() => onPageChange('schedule-appointment')}
                 variant="outline"
                 className="hover:shadow-medical transition-medical"
@@ -225,7 +225,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
                 Schedule Appointment
               </Button>
             )}
-            <Button 
+            <Button
               onClick={() => onPageChange('patients')}
               variant="outline"
               className="hover:shadow-medical transition-medical"
@@ -234,7 +234,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ userRole, onPageChange }) 
               View Patients
             </Button>
             {(userRole === 'admin' || userRole === 'doctor') && (
-              <Button 
+              <Button
                 onClick={() => onPageChange('medical-records')}
                 variant="outline"
                 className="hover:shadow-medical transition-medical"

@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Heart, Loader2 } from 'lucide-react';
+import { GiCaduceus } from 'react-icons/gi';
 
 interface LoginFormProps {
   onLogin: (role: 'admin' | 'doctor' | 'receptionist') => void;
@@ -49,8 +50,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         <Card className="shadow-elevated bg-gradient-card">
           <CardHeader className="text-center space-y-4">
             {/* Logo */}
-            <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-medical">
-              <Heart className="w-8 h-8 text-white" />
+            <div className="mx-auto w-14 h-14 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 rounded-lg flex items-center justify-center shadow-medical">
+              <GiCaduceus className="w-9 h-9 text-white" />
             </div>
             <div>
               <CardTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-500 to-green-500">
